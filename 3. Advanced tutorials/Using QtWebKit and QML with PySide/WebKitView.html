@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script language="javascript" type="text/javascript">
+        	 function sendJSON(data) {
+                alert(JSON.stringify(data));
+            }
+            function receiveJSON(data) {
+                element = document.getElementById('received');
+                element. innerHTML += "\n" + data;
+            }
+            function setRotation() {
+                element = document.getElementById('rotate');
+                angle = parseInt(element.value);
+                message = ['setRotation', angle];
+                sendJSON(message);
+            }
+            function sendStuff() {
+                sendJSON([42, 'PySide', 1.23, true, {'a':1,'b':2}]);
+            }
+		</script>
+    </head>
+    <body>
+        <h2>PySide + QML + WebKit FTW</h2>
+        <p>
+        Set rotation:
+        <input type="text" size="5" id="rotate" value="10"/>
+        <button onclick=setRotation()>Click me now!</button>
+        </p>
+        <p>
+        Send arbitrary data structures:
+        <button onclick=sendStuff()>No, click me!</button>
+        </p>
+        <p>Received stuff:</p>
+        <pre id="received"></pre>
+    </body>
+</html>
